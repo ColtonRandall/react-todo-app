@@ -1,10 +1,24 @@
 import "./styles.css";
 import NewTodoForm from "./NewTodoForm";
 import TodoList from "./TodoList";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function App() {
-  const [todos, setTodos] = useState([]); // empty array for multiple todos to be added
+  const [todos, setTodos] = useState(() => {
+    const localValue = localStorage.getItem("ITEMS");
+    if (localValue == null) return [];
+    return JSON.parse(localValue);
+  }); // For useEffct(), we pass in a function
+
+  /*
+    useEffect(): 
+    - Store in local storage using useEffect - allows todos to persist on screen after reload.
+    - Takes function as an argument - runs everytime the objects in the array (2nd argument - todos) changes
+    - "Saves todos in local storage under the key "ITEMS"", JSON.stringify(todos) converts the todos array into string for lcoalStorage (only stores strings)."
+  */
+  useEffect(() => {
+    localStorage.setItem("ITEMS", JSON.stringify(todos));
+  }, [todos]);
 
   function addTodo(title) {
     setTodos((currentTodos) => {
