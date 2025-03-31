@@ -22,7 +22,7 @@ export default function App() {
         ...currentTodos,
         { id: crypto.randomUUID(), title: newItem, completed: false },
       ];
-    })
+    });
   }
 
   return (
@@ -36,7 +36,20 @@ export default function App() {
       </form>
       <h1 className="header">Todo List</h1>
       <ul className="list">
-        <li>
+        {/* loop through todos and render them in JSX using map */}
+        {todos.map((todo) => {
+          return (
+            <li>
+              <label>
+                <input type="checkbox" />
+                {todo.title}
+              </label>
+              <button className="btn btn-danger">Delete</button>
+            </li>
+          );
+        })}
+
+        {/* <li>
           <label>
             <input type="checkbox" />
             Todo item 1
@@ -49,7 +62,7 @@ export default function App() {
             Todo item 2
           </label>
           <button className="btn btn-danger">Delete</button>
-        </li>
+        </li> */}
       </ul>
     </>
   );
