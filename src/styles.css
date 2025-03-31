@@ -75,6 +75,10 @@ body {
   list-style: none;
 }
 
+hr {
+  margin-bottom: 1.5rem;
+}
+
 .list li:has(input:checked) label {
   color: hsl(200, 20%, 40%);
 }
@@ -87,8 +91,9 @@ body {
 
 .list li {
   display: flex;
-  gap: 0.5rem;
+  gap: 1rem;
   align-items: center;
+  margin-bottom: 0.5rem;
 }
 
 .list li label {

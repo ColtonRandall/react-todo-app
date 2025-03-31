@@ -14,7 +14,7 @@ export default function App() {
       return currentTodos.filter((todo) => todo.id !== id);
     });
   }
-  
+
   function handleSubmit(e) {
     e.preventDefault(); // prevent page from refreshing
     /*
@@ -30,7 +30,6 @@ export default function App() {
       ];
     });
 
-
     setNewItem("");
   }
 
@@ -44,6 +43,7 @@ export default function App() {
         <button className="btn">Add Todo</button>
       </form>
       <h1 className="header">Todo List</h1>
+      <hr />
       <ul className="list">
         {todos.length === 0 && "All done 😊"}
         {/* loop through todos and render them in JSX using map */}
